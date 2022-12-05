@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections; 
 using test1 = tesnamespace;
 using test2 = testnamespace2; 
 
@@ -14,6 +15,17 @@ namespace ConsoleApp_Semaine_CSharp
             Console.WriteLine(x); 
         }
 
+        enum JourSemaine: int
+        {
+            Lundi, 
+            Mardi, 
+            Mercredi, 
+            Jeudi = 3, 
+            Vendredi, 
+            Samedi, 
+            Dimanche
+        }
+
         static void ChangeValueReference(test1.Student student)
         {
             student.name = "Julien";
@@ -24,11 +36,11 @@ namespace ConsoleApp_Semaine_CSharp
             Console.WriteLine("Je ne marche pas c'est un prank");
             int x = 5;
             bool @true;
-            @true = false; 
+            @true = false;
 
-            if(x is int)
+            if (x is int)
             {
-                Console.WriteLine("Je suis bien un int"); 
+                Console.WriteLine("Je suis bien un int");
             }
             else
             {
@@ -38,25 +50,25 @@ namespace ConsoleApp_Semaine_CSharp
 
 
             //Declaration variable -- reserver une certaine quantité de mémoire en fonction du type
-            bool b_a = false, b_b = false; 
+            bool b_a = false, b_b = false;
 
-            if(x > 23)
+            if (x > 23)
             {
-                x -= 3; 
+                x -= 3;
             }
             else if (x == 23)
             {
-                x -= 1; 
+                x -= 1;
             }
             else
             {
-                x += 4; 
+                x += 4;
             }
 
-            string majorVersion = null; 
-            if(majorVersion != null)
+            string majorVersion = null;
+            if (majorVersion != null)
             {
-                Console.WriteLine("je suis une version nulle"); 
+                Console.WriteLine("je suis une version nulle");
             }
             else
             {
@@ -70,7 +82,7 @@ namespace ConsoleApp_Semaine_CSharp
 
 
             //Class1.cs et Class2.cs implémente deux classes du même nom.
-            test1.maclasseA classA = null; 
+            test1.maclasseA classA = null;
             test2.maclasseB classB = null;
 
             int i = 1; // bool, char, int, byte type primitif
@@ -82,7 +94,7 @@ namespace ConsoleApp_Semaine_CSharp
 
 
             test1.Student student = new test1.Student();
-            student.name = "Kevin"; 
+            student.name = "Kevin";
             ChangeValueReference(student);
             Console.WriteLine(student.name); // un type référence on travaille toujours avec le même emplacements mémoire qu'on va modifier. 
             string nameUpper = student.name.ToUpper(); // c'est une copy de la variable il faut donc la stocker dans une autre variable
@@ -90,7 +102,82 @@ namespace ConsoleApp_Semaine_CSharp
                                                        //string interpolation
             Console.WriteLine($"Bienvenue {student.name}, comment vas-tu ? ");
 
-            int? z = null; 
+            int? z = null; //remplace check de la variable null normalement on fait pas il faut gérer derrière l'attribution de la variable. 
+            Console.WriteLine(z);
+            int e = 4;
+            long r = e; //Int32 est le int dans le IL propre au framework Dotnet
+                        //long est Int64 en IL 
+
+            //conversion explicite
+
+            int t = (int)r;
+
+            // exemple problème de conversion
+            short n = 300;
+            byte o = (byte)n;
+            Console.WriteLine(o);
+
+            //les constante ne peuvent pas être modifié au runtime (pendant l'execution)
+            //en js, quand on utilise un const sur tableau on peut utiliser les fonctions pour ajouter / modifier ou delete
+            // mais on ne peut pas utiliser "=" pas de réassignation
+
+            JourSemaine MonJour = JourSemaine.Jeudi;
+            Console.WriteLine(MonJour);
+            //On peut caster la valeur de l'enum
+            int NombreJour = (int)MonJour;
+            Console.WriteLine(NombreJour);
+            // weekend peut avoir une des deux valeurs
+            JourSemaine weekend = JourSemaine.Dimanche | JourSemaine.Samedi;
+            Console.WriteLine(weekend);
+
+            //enumérations permet de déclarer un type qui regroupe des valeur constantes.
+            //On peut donner une type de retour à l'énumération.
+            //Dans js, il faut surtout pas donner des objets, des int, des string dans un même tableau
+            //car si on veut controler la données et qu'on boucle dessus ça casse
+
+            //Déclare Tableau
+            int[] monTableau;
+            //Initialise un tableau a taille limite
+            monTableau = new int[50];
+
+            //Déclare Tableau 
+            int[] monTableauSansLimite;
+            //initialise tableau a taille illimité
+            monTableauSansLimite = new int[] { };
+
+
+            //[ligne, colonne]
+            int[,] tmd = new int[2, 2];
+            int[,,] tmmd = new int[5, 3, 2];
+
+            int[][] temd = new int[2][];
+            temd[0] = new int[] { 2, 5 };
+            temd[1] = new int[] { 2, 5, 12, 21 };
+
+/*            for (int b = 0; b < temd.Length; i++)
+            {
+                for (int j = 0; j < temd[b].Length; i++)
+                {
+                   // Console.WriteLine(temd[b][j]); 
+                }
+            }*/
+
+
+            //ArrayList
+
+            ArrayList arrayList = new ArrayList();
+            //ici on type la list
+            arrayList.Add(new object());
+            arrayList.Add("TEST");
+            //c'est à nous de vérifier le type de l'objet qu'on insert
+            foreach (object item in arrayList)
+            {
+                if(item.GetType() == typeof(object))
+                {
+                    Console.WriteLine(item);
+                }
+                
+            }
 
         }
     }
