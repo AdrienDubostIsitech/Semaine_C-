@@ -1,0 +1,16 @@
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\bin\Debug\net5.0\ConsoleApp_Semaine_CSharp.exe
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\bin\Debug\net5.0\ConsoleApp_Semaine_CSharp.deps.json
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\bin\Debug\net5.0\ConsoleApp_Semaine_CSharp.runtimeconfig.json
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\bin\Debug\net5.0\ConsoleApp_Semaine_CSharp.runtimeconfig.dev.json
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\bin\Debug\net5.0\ConsoleApp_Semaine_CSharp.dll
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\bin\Debug\net5.0\ref\ConsoleApp_Semaine_CSharp.dll
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\bin\Debug\net5.0\ConsoleApp_Semaine_CSharp.pdb
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\obj\Debug\net5.0\ConsoleApp_Semaine_CSharp.csproj.AssemblyReference.cache
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\obj\Debug\net5.0\ConsoleApp_Semaine_CSharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\obj\Debug\net5.0\ConsoleApp_Semaine_CSharp.AssemblyInfoInputs.cache
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\obj\Debug\net5.0\ConsoleApp_Semaine_CSharp.AssemblyInfo.cs
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\obj\Debug\net5.0\ConsoleApp_Semaine_CSharp.csproj.CoreCompileInputs.cache
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\obj\Debug\net5.0\ConsoleApp_Semaine_CSharp.dll
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\obj\Debug\net5.0\ref\ConsoleApp_Semaine_CSharp.dll
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\obj\Debug\net5.0\ConsoleApp_Semaine_CSharp.pdb
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleApp_Semaine_CSharp\obj\Debug\net5.0\ConsoleApp_Semaine_CSharp.genruntimeconfig.cache
