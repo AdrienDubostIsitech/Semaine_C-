@@ -15,6 +15,38 @@ namespace ConsoleApp_Semaine_CSharp
             Console.WriteLine(x); 
         }
 
+        // public : autorise l'acces a touts les types et a tout les projet
+        // private : Autorise l'acces uniquement pour les autres membres du type
+        // internal : Disponible uniquement dans l'espace de nom du type donnée (donc de la classe etc...)
+        // protected : acces pour les membres du type et pour tout les autres type héritant
+        //ce celui-ci même en dehors de l'espace de nom(assembly)
+        // protected internal : a regarde soi-même si interessé 
+
+
+        //atributs et modificateurs de classe (niveau d'accès) sont placés avant le mot class
+        //héritage et implémentation d'interface se placent après le nom de la classe. 
+        class MaClasse // public par défaut 
+        {
+            //Les membres d'une classe : méthodes, propriétés sont placées entre les accolades
+            public int MyProperty { get; set; }
+            int k { get; set; } // privé par défaut
+
+        }
+
+        //une struct ne supporte pas héritage
+        //Elles peuvent posseder tout les membres d'une classe à  l'exception d'un constructeur sans paramètres, d'un destructeur et de membres virtuel. 
+        struct Geopoint //ressemble à une classe mais c'est un value type et non un reference type (un peu comme une classe primitive)
+        {
+            double Lat;
+
+            double Long;
+            public Geopoint(double Long, double Lat)
+            {
+                this.Long = Long;
+                this.Lat = Lat; 
+            }
+        }
+
         enum JourSemaine: int
         {
             Lundi, 
@@ -93,7 +125,7 @@ namespace ConsoleApp_Semaine_CSharp
 
 
 
-            test1.Student student = new test1.Student();
+            test1.Student student = new test1.Student("Dorian");
             student.name = "Kevin";
             ChangeValueReference(student);
             Console.WriteLine(student.name); // un type référence on travaille toujours avec le même emplacements mémoire qu'on va modifier. 
@@ -178,6 +210,8 @@ namespace ConsoleApp_Semaine_CSharp
                 }
                 
             }
+
+            Geopoint g = new Geopoint(1, 45); 
 
         }
     }

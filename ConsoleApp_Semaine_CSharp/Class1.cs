@@ -10,8 +10,13 @@ namespace tesnamespace
 
     class maclasseB {}
 
-    class Student
+    public class Student
     {
         public string name { get; set; }
+
+        public Student(string initName)
+        {
+            this.name = initName; 
+        }
     }
 }

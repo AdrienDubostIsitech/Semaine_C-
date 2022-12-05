@@ -26,3 +26,25 @@ class static => permet d'utiliser les méthodes sans importer
 en C# on distingue les value type bool, int, char, byte et les references type string, class, delegate, Arrays
 
 les type primitif ne peuvent pas être null.
+
+pourquoi y'a des portées dans les langages et à quoi ça sert ?????????
+exemple d'usage de classe abstraite et exemple d'usage d'interface pour expliquer différence
+
+"prop" double tab pour créer propriété rapidement 
+"for" tab pour faire une boucle for rapidement
+
+constructeur est une méthode du nom de la classe qui s'éxecute à chaque instanciation de la classe. 
+le this fait référence à l'instance de l'objet qu'on est entrain de créer
+
+créer un dossier de type library qui contient la totalité des classes 
+ou alors créer un projet carrément qui servira de librairie. 
+
+
+Quand on déclare une classe, on peut initialiser les champs directement à la déclaration.
+
+C# permet de rendre les classes et membres abstraites : 
+ne peut pas être instancier et une méthode ne contient pas d'implémentation
+définir la forme des classes enfants sans en définir le fond l'implémentation est à la charge des classes enfant
+une classe abstraite permet aussi d'avoir des propriétés.
+On implémente les membres abstrait avec override. 
+public void abstract méthod(); est une signature d'une méthode. 
