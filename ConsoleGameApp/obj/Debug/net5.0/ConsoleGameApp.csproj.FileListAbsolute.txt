@@ -1,0 +1,16 @@
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\bin\Debug\net5.0\ConsoleGameApp.exe
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\bin\Debug\net5.0\ConsoleGameApp.deps.json
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\bin\Debug\net5.0\ConsoleGameApp.runtimeconfig.json
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\bin\Debug\net5.0\ConsoleGameApp.runtimeconfig.dev.json
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\bin\Debug\net5.0\ConsoleGameApp.dll
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\bin\Debug\net5.0\ref\ConsoleGameApp.dll
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\bin\Debug\net5.0\ConsoleGameApp.pdb
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\obj\Debug\net5.0\ConsoleGameApp.csproj.AssemblyReference.cache
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\obj\Debug\net5.0\ConsoleGameApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\obj\Debug\net5.0\ConsoleGameApp.AssemblyInfoInputs.cache
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\obj\Debug\net5.0\ConsoleGameApp.AssemblyInfo.cs
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\obj\Debug\net5.0\ConsoleGameApp.csproj.CoreCompileInputs.cache
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\obj\Debug\net5.0\ConsoleGameApp.dll
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\obj\Debug\net5.0\ref\ConsoleGameApp.dll
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\obj\Debug\net5.0\ConsoleGameApp.pdb
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\obj\Debug\net5.0\ConsoleGameApp.genruntimeconfig.cache

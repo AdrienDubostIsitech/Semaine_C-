@@ -118,10 +118,11 @@
 	- héritage et implémentation d'interface se placent après le nom de la classe.
 	
 	- héritage permet d'acceder aux membres et méthodes public ou protected de la classe mère pour structurer la classe fille.
+	
+	- le mot clef "base(value)" appelé comme une méthode permet d'appeler le constructeur de la classe mère.
 
 - Classe Abstraite : 
 	- C# permet de rendre les classes et membres abstraites : ne peut pas être instancier et une méthode ne contient pas d'implémentation définir la forme des classes enfants sans en définir le fond l'implémentation est à la charge des classes enfant une classe abstraite permet aussi d'avoir des propriétés.
-
 
 
 
