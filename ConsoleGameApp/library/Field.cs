@@ -11,9 +11,13 @@ namespace ConsoleGameApp.library
         public Case[,] fieldCase;
         public int XDimensions { get; set; }
         public int YDimensions { get; set; }
+        public int countOpenCase { get; set; }
+        public int NonBombCase { get; set; }
 
         public Field(int xDimensions, int yDimensions)
-        { 
+        {
+            countOpenCase = 0;
+            NonBombCase = 0; 
             this.XDimensions = xDimensions;
             this.YDimensions = yDimensions;
             this.fieldCase = new Case[yDimensions, xDimensions]; 
@@ -26,6 +30,7 @@ namespace ConsoleGameApp.library
                     if(BombOrNot <= 4)
                     {
                         this.fieldCase[i, j] = new Case(CaseType.None, stateEnum.Close, j, i);
+                        NonBombCase += 1; 
                     } else
                     {
                         this.fieldCase[i, j] = new Case(CaseType.Bomb, stateEnum.Close, j, i);
@@ -92,6 +97,7 @@ namespace ConsoleGameApp.library
             {
                 case 'O':
                     selectedcase.State = stateEnum.Open;
+                    this.countOpenCase += 1; 
                     return saveCheck(selectedcase); 
                 case 'F':
                     selectedcase.State = stateEnum.Flag;
@@ -106,10 +112,28 @@ namespace ConsoleGameApp.library
         {
             if(selectedcase.Type == CaseType.Bomb)
             {
+                EndGame(false); 
+                return false;
+            }
+            CheckNearBomb(selectedcase.xValue, selectedcase.yValue);
+            if(this.countOpenCase == this.NonBombCase)
+            {
+                EndGame(true);
                 return false; 
             }
-            CheckNearBomb(selectedcase.xValue, selectedcase.yValue); 
             return true; 
+        }
+
+        public void EndGame(bool resultGame)
+        {
+            if(resultGame == false)
+            {
+                Console.WriteLine(" Vous avez perdu ! Pas de chance ! Une autre partie ? "); 
+            }
+            else
+            {
+                Console.WriteLine(" Vous avez gagné !  Felicitations ! "); 
+            }
         }
 
         public void CheckNearBomb(int xDim, int yDim)
@@ -154,8 +178,9 @@ namespace ConsoleGameApp.library
                     if (this.fieldCase[yDim, xDim - 1].Type != CaseType.Bomb && this.fieldCase[yDim, xDim - 1].State != stateEnum.Open)
                     {
                         this.fieldCase[yDim, xDim - 1].State = stateEnum.Open;
+                        this.countOpenCase += 1; 
                         CheckNearBomb(xDim - 1, yDim);
-                        //this.fieldCase[yDim, xDim - 1].bombNear = tmpcount;
+                        
                     }
                 }
                 if (xDim < this.XDimensions - 1)
@@ -163,8 +188,9 @@ namespace ConsoleGameApp.library
                     if (this.fieldCase[yDim, xDim + 1].Type != CaseType.Bomb && this.fieldCase[yDim, xDim + 1].State != stateEnum.Open)
                     {
                         this.fieldCase[yDim, xDim + 1].State = stateEnum.Open;
+                        this.countOpenCase += 1;
                         CheckNearBomb(xDim + 1, yDim);
-                        //this.fieldCase[yDim, xDim + 1].bombNear = tmpcount;
+                       
                     }
                 }
                 if (yDim >= 1)
@@ -172,8 +198,9 @@ namespace ConsoleGameApp.library
                     if (this.fieldCase[yDim - 1, xDim].Type != CaseType.Bomb && this.fieldCase[yDim - 1, xDim].State != stateEnum.Open)
                     {
                         this.fieldCase[yDim - 1, xDim].State = stateEnum.Open;
+                        this.countOpenCase += 1;
                         CheckNearBomb(xDim, yDim -1);
-                        //this.fieldCase[yDim - 1, xDim].bombNear = tmpcount;
+                        
                     }
                 }
                 if (yDim < this.XDimensions - 1)
@@ -181,8 +208,9 @@ namespace ConsoleGameApp.library
                     if (this.fieldCase[yDim + 1, xDim].Type != CaseType.Bomb && this.fieldCase[yDim + 1, xDim].State != stateEnum.Open)
                     {
                         this.fieldCase[yDim + 1, xDim].State = stateEnum.Open;
+                        this.countOpenCase += 1;
                         CheckNearBomb(xDim, yDim + 1);
-                        //this.fieldCase[yDim + 1, xDim].bombNear = tmpcount;
+                        
                     }
                 }
             } 

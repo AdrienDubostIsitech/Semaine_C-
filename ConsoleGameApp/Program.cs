@@ -27,7 +27,6 @@ namespace ConsoleGameApp
                 field.DisplayField(Utils.alphabet);
                 isCurrentGame =  field.MakeActionToCase(field.ChooseCase(action.SelectCase())); 
             }
-            
         }
 
         public static void menuFunction()
