@@ -15,6 +15,7 @@ namespace ConsoleGameApp.library
 
         public string SelectCase()
         {
+            Console.WriteLine(""); 
             Console.WriteLine("Choisissez sur quel case vous voulez agir : ");
             string inputCasePosition = Console.ReadLine();
             if(inputCasePosition.Length > 2 || inputCasePosition.Length < 2)
