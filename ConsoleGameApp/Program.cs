@@ -15,6 +15,21 @@ namespace ConsoleGameApp
             return input[0]; 
         }
 
+        public static void LaunchGame()
+        {
+            Console.Clear();
+            Console.WriteLine("StartGame");
+            PlayerAction action = new PlayerAction(); 
+            Field field = new Field(9, 9);
+            bool isCurrentGame = true; 
+            while(isCurrentGame)
+            {
+                field.DisplayField(Utils.alphabet);
+                isCurrentGame =  field.MakeActionToCase(field.ChooseCase(action.SelectCase())); 
+            }
+            
+        }
+
         public static void menuFunction()
         {
             Console.WriteLine("################ Bienvenue au Démineur ###########################");
@@ -28,10 +43,7 @@ namespace ConsoleGameApp
             switch (inputvalue)
             {
                 case 'A':
-                    Console.Clear(); 
-                    Console.WriteLine("StartGame");
-                    Field field = new Field(9, 9);
-                    field.DisplayField(Utils.alphabet); 
+                    LaunchGame(); 
                     break;
                 case 'H':
                     Console.Clear();

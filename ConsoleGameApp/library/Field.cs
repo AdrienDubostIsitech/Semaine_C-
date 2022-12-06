@@ -47,9 +47,15 @@ namespace ConsoleGameApp.library
                 Console.WriteLine("");
                 for (int j = 0; j < xDimensions; j++)
                 {
-                    Console.Write($" [{this.fieldCase[i, j].State}] "); 
+                    if(this.fieldCase[i, j].State == stateEnum.Open)
+                    {
+                        Console.Write($" [{CheckNearBomb(j, i)}] ");
+                    }
+                    else
+                    {
+                        Console.Write($" [{((char)this.fieldCase[i, j].Type)}] ");
+                    }
                 }
-               
                 Console.Write($" {i + 1} ");
             }
         }
@@ -66,15 +72,15 @@ namespace ConsoleGameApp.library
             {
                 return null; 
             }
-            yDim = Int32.Parse(selectedCase[0].ToString());
+            yDim = Int32.Parse(selectedCase[1].ToString());
             if(yDim -1 > this.yDimensions)
             {
                 return null; 
             }
-            return this.fieldCase[yDim, xDim]; 
+            return this.fieldCase[yDim - 1, xDim]; 
         }
 
-        public void MakeActionToCase(Case selectedcase)
+        public bool MakeActionToCase(Case selectedcase)
         {
             Console.WriteLine(" Choisissez une action à effectuer : ");
             Console.WriteLine(" Appuyez sur O sur pour ouvrir la case ");
@@ -86,14 +92,61 @@ namespace ConsoleGameApp.library
             {
                 case 'O':
                     selectedcase.State = stateEnum.Open;
+                    return saveCheck(selectedcase); 
                     break;
                 case 'F':
                     selectedcase.State = stateEnum.Flag;
+                    return true; 
                     break; 
                 default:
-                    Console.WriteLine("Action incorrecte veuillez recommencer"); 
+                    Console.WriteLine("Action incorrecte veuillez recommencer");
+                    return true; 
                     break; 
             }
+        }
+
+        public bool saveCheck(Case selectedcase)
+        {
+            if(selectedcase.Type == CaseType.Bomb)
+            {
+                return false; 
+            }
+            return true; 
+        }
+
+        public int CheckNearBomb(int xDim, int yDim)
+        {
+            int count = 0; 
+            if(xDim > 1)
+            {
+                if (this.fieldCase[yDim, xDim - 1].Type == CaseType.Bomb)
+                {
+                    count += 1; 
+                }
+            }
+            if(xDim < this.xDimensions)
+            {
+                if (this.fieldCase[yDim, xDim + 1].Type == CaseType.Bomb)
+                {
+                    count += 1;
+                }
+            }
+            if (yDim > 1)
+            {
+                if (this.fieldCase[yDim -1, xDim].Type == CaseType.Bomb)
+                {
+                    count += 1;
+                }
+            }
+            if (yDim < this.xDimensions)
+            {
+                if (this.fieldCase[yDim + 1, xDim].Type == CaseType.Bomb)
+                {
+                    count += 1;
+                }
+            }
+
+            return count; 
         }
     }
 }
