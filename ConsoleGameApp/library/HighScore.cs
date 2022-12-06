@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleGameApp.library
 {
-    static class Utils
+    class HighScore
     {
-        public const string alphabet = "ABCDEFGHIJKMNOPQRSTUVWXYZ";
+        public int TimeScore { get; set; }
     }
 }

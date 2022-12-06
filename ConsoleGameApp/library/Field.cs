@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using System.Diagnostics; 
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft; 
 
 namespace ConsoleGameApp.library
 {
@@ -13,11 +17,13 @@ namespace ConsoleGameApp.library
         public int YDimensions { get; set; }
         public int countOpenCase { get; set; }
         public int NonBombCase { get; set; }
+        public Stopwatch timer { get; set; }
 
         public Field(int xDimensions, int yDimensions)
         {
-            countOpenCase = 0;
-            NonBombCase = 0; 
+            this.countOpenCase = 0;
+            this.NonBombCase = 0;
+            this.timer = new Stopwatch(); 
             this.XDimensions = xDimensions;
             this.YDimensions = yDimensions;
             this.fieldCase = new Case[yDimensions, xDimensions]; 
@@ -27,7 +33,7 @@ namespace ConsoleGameApp.library
 
                     Random rnd = new Random();
                     int BombOrNot = rnd.Next(1, 6);
-                    if(BombOrNot <= 4)
+                    if(BombOrNot <= 6)
                     {
                         this.fieldCase[i, j] = new Case(CaseType.None, stateEnum.Close, j, i);
                         NonBombCase += 1; 
@@ -132,7 +138,9 @@ namespace ConsoleGameApp.library
             }
             else
             {
-                Console.WriteLine(" Vous avez gagné !  Felicitations ! "); 
+                Console.WriteLine(" Vous avez gagné !  Felicitations ! ");
+                this.timer.Stop();
+                Console.WriteLine($" Vous avez mis : {Math.Round(this.timer.Elapsed.TotalSeconds)} secondes"); 
             }
         }
 
@@ -214,6 +222,17 @@ namespace ConsoleGameApp.library
                     }
                 }
             } 
+        }
+
+        public void ManageHighScore(int score)
+        {
+            StreamReader reader = new StreamReader("HighScore.json");
+            string jsonString = reader.ReadToEnd();
+            List<HighScore> highscores = JsonConvert.DeserializeObject<List<HighScore>>(jsonString);
+            foreach (HighScore item in highscores)
+            {
+                Console.WriteLine(item.ToString()); 
+            }
         }
 
     }

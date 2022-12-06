@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "WTGJZIFN+3qiTFcvjPGhdPJjKwEIKiYR+oxLSGIYEiPXh7S5fzcj4QfKf9XKDUMRegtqjeQ9HJMMhw38mz08mA==",
+  "dgSpecHash": "1gRPHriM5MVwA84Q7hueM0rVFofPvfQaYxuSuIcHKLnjBc5dWeCAnmun+ofdEBKh+Pb8l/jbDdKg+nrMngYQ5Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\adrie\\Documents\\Isitech\\Semaine_C#_4eme_Annee\\ConsoleGameApp\\ConsoleGameApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\adrie\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using ConsoleGameApp.library;
 
 namespace ConsoleGameApp
@@ -14,13 +15,13 @@ namespace ConsoleGameApp
             input = input.ToUpper(); 
             return input[0]; 
         }
-
         public static void LaunchGame()
-        {
+        { 
             Console.Clear();
             Console.WriteLine("StartGame");
             PlayerAction action = new PlayerAction(); 
             Field field = new Field(9, 9);
+            field.timer.Start(); 
             bool isCurrentGame = true; 
             while(isCurrentGame)
             {
