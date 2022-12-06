@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ConsoleGameApp.library; 
 
 namespace GameApp_Console_Test
 {
@@ -6,8 +7,9 @@ namespace GameApp_Console_Test
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMethod_should_return_jsonHighscoreInformation()
         {
+             
         }
     }
 }

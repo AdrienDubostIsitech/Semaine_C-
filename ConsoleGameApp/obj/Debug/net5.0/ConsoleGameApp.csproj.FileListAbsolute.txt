@@ -14,3 +14,5 @@ C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\obj\Debug\
 C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\obj\Debug\net5.0\ref\ConsoleGameApp.dll
 C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\obj\Debug\net5.0\ConsoleGameApp.pdb
 C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\obj\Debug\net5.0\ConsoleGameApp.genruntimeconfig.cache
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\adrie\Documents\Isitech\Semaine_C#_4eme_Annee\ConsoleGameApp\obj\Debug\net5.0\ConsoleGameApp.csproj.CopyComplete

@@ -8,6 +8,11 @@ namespace ConsoleGameApp.library
 {
     class HighScore
     {
-        public int TimeScore { get; set; }
+        public double score { get; set; }
+
+        public HighScore(double score)
+        {
+            this.score = score; 
+        }
     }
 }

@@ -47,7 +47,7 @@ namespace ConsoleGameApp.library
         
         public void DisplayField(String alphabet)
         {
-            Console.Clear();
+            Console.Clear(); 
             for (int i = 0; i < YDimensions; i++)
             {
                 Console.Write($" [{alphabet[i]}] "); 
@@ -140,7 +140,10 @@ namespace ConsoleGameApp.library
             {
                 Console.WriteLine(" Vous avez gagné !  Felicitations ! ");
                 this.timer.Stop();
-                Console.WriteLine($" Vous avez mis : {Math.Round(this.timer.Elapsed.TotalSeconds)} secondes"); 
+                double score = Math.Round(this.timer.Elapsed.TotalSeconds);
+                HighScore objectscore = NewHighScore(score);
+                ManageHighScore(objectscore); 
+                Console.WriteLine($" Vous avez mis : {score} secondes"); 
             }
         }
 
@@ -224,15 +227,24 @@ namespace ConsoleGameApp.library
             } 
         }
 
-        public void ManageHighScore(int score)
+        public void ManageHighScore(HighScore newScore)
         {
             StreamReader reader = new StreamReader("HighScore.json");
             string jsonString = reader.ReadToEnd();
             List<HighScore> highscores = JsonConvert.DeserializeObject<List<HighScore>>(jsonString);
-            foreach (HighScore item in highscores)
-            {
-                Console.WriteLine(item.ToString()); 
-            }
+            highscores.Add(newScore);
+            reader.Close(); 
+            IEnumerable<HighScore> query = from highscore in highscores
+                                           orderby highscore.score
+                                           select highscore;
+            string jsonArray = JsonConvert.SerializeObject(query.ToArray());
+            System.IO.File.WriteAllText("HighScore.json", jsonArray); 
+        }
+
+        public HighScore NewHighScore(double score)
+        {
+            HighScore newscore = new HighScore(score);
+            return newscore; 
         }
 
     }
