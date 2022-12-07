@@ -10,3 +10,11 @@
 	- dotnet tool install --global dotnet-ef  
 	- ensuite on va (à la manière de npm) installer des package de nugget
 	- https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer pour les commandes d'installation
+ - Context Database :
+	 - ne pas créer plusieurs instances de context pour ne pas avoir des problèmes de mise à jour en base de données
+	 - ne créer qu'une instance de dbContext que tout les controller vont utiliser (Singleton)
+	 - On injecte ça dans le constructeur du controller c'est l'injection de dépendances.
+	 - Depuis l'instance unique on peut accéder au table et à des méthodes qui nous permet de manipuler le context sans modifier la base de données 
+	 - dotnet ef migrations add initialMigrations
+	 - dotnet ef database update pour regler connection string
+	 

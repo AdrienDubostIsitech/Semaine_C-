@@ -13,19 +13,19 @@ public class HeroController : ControllerBase
         new Hero {Id = 3, Name = "Thor", RealName = "Thor"}, 
         new Hero {Id = 4, Name = "Hulk", RealName = "Bruce Banner"}
     }; 
+    private readonly WebApiDbContext _context; 
 
-    [HttpGet]
-    public ActionResult<List<Hero>> Get()
+    public HeroController(WebApiDbContext apiDbContext) 
     {
-        return Ok(heroes); 
+        this._context = apiDbContext;
     }
 
-    
-   // [HttpPost]
-   // public ActionResult<List<Hero>> Post([FromBody] Hero RequestedHero) {
-   //     var hero = heroes.Find(hero => RequestedHero.Id == hero.Id); 
-   //     return Ok(); 
-   // }
+    [HttpGet]
+    public async Task<ActionResult<List<Hero>>> GetHeroes()
+    {
+        var myHeroes = await _context.Heroes.ToListAsync(); 
+        return Ok(myHeroes); 
+    }
 
     [HttpPost]
     public async Task<ActionResult<List<Hero>>> CreateHero([FromBody]Hero newHero)
