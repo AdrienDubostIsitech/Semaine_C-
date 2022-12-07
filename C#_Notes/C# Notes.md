@@ -125,6 +125,13 @@
 	- C# permet de rendre les classes et membres abstraites : ne peut pas être instancier et une méthode ne contient pas d'implémentation définir la forme des classes enfants sans en définir le fond l'implémentation est à la charge des classes enfant une classe abstraite permet aussi d'avoir des propriétés.
 
 
+- CLI Dotnet :
+	- dotnet new --list // tout les projet possible
+	- dotnet new webapi -o nomduDossier // créer une api web ASP.NET avec le dossier nommé 
+
+
+
+
 
 pourquoi y'a des portées dans les langages et à quoi ça sert ?????????
 exemple d'usage de classe abstraite et exemple d'usage d'interface pour expliquer différence

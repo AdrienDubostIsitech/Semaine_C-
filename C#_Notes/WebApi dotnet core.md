@@ -1,0 +1,12 @@
+- rappel fonctionnement 
+	- requete hhtp sur un port qui navigue et reviens avec une réponse 
+	- une route "/api" qui va être défini par des controlleurs
+	- controlleurs vont appelés des services 
+	- ces services qui vont utiliser une classe ORM et des classes entités qui vont mappés les data de la base de données 
+	- MINIMUM SYNDICAL
+	- controlleur api est une classe qui permet de traiter des requetes http entrantes et de fournir des réponses.
+	- api contient toute la logique / tout les calculs doivent se faire dans l'api
+-  Installer entity framework: 
+	- dotnet tool install --global dotnet-ef  
+	- ensuite on va (à la manière de npm) installer des package de nugget
+	- https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer pour les commandes d'installation
