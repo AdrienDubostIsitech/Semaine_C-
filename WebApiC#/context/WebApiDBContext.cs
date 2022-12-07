@@ -8,4 +8,6 @@ public class WebApiDbContext: DbContext
     }
 
     public DbSet<Hero>? Heroes { get; set; }
+    public DbSet<Film>? Films { get; set; }
+    public DbSet<Power> Powers { get; set; }
 }

@@ -55,8 +55,10 @@ public class HeroController : ControllerBase
         if(updatedHero == null)  return BadRequest();
         var hero = await this._context.Heroes.FindAsync(updatedHero.Id);
         if(hero == null)  return BadRequest();
-        hero.Name = updatedHero.Name; 
-        hero.RealName = updatedHero.RealName; 
+        if(hero.Name != null) hero.Name = updatedHero.Name; 
+        if(hero.RealName != null) hero.RealName = updatedHero.RealName; 
+        if(hero.Films != null) hero.Films = updatedHero.Films; 
+        if(hero.Powers != null) hero.Powers = updatedHero.Powers; 
         this._context.Heroes.Update(hero);  
         this._context.SaveChanges(); 
         return Ok(); 
