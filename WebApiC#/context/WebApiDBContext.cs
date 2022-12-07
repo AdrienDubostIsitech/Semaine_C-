@@ -7,5 +7,5 @@ public class WebApiDbContext: DbContext
         
     }
 
-    public DbSet<Hero> Heroes { get; set; }
+    public DbSet<Hero>? Heroes { get; set; }
 }

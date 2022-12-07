@@ -11,3 +11,5 @@ Problématiser l'évolution de votre parcours :
 - le poste qu'on vise doit etre en accord avec notre évolution
 - Bilan critique de notre parcours à l'instant T
 - faire une veille technique de ce qu'on apprend
+
+- 

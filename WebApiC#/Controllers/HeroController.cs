@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc; 
-
+using System.Net; 
 namespace WebApiC_.Controllers;
 
 [ApiController]
@@ -20,17 +20,55 @@ public class HeroController : ControllerBase
         this._context = apiDbContext;
     }
 
-    [HttpGet]
+    [HttpGet("get_heroes")]
     public async Task<ActionResult<List<Hero>>> GetHeroes()
-    {
-        var myHeroes = await _context.Heroes.ToListAsync(); 
-        return Ok(myHeroes); 
+    { 
+        return Ok(await this._context.Heroes.ToListAsync()); 
     }
 
-    [HttpPost]
+    [HttpPost("get_hero_by_name")]
+    public async Task<ActionResult<List<Hero>>> GetHeroesByName([FromBody] string name)
+    { 
+        if(name == null || name == "string"){ 
+            return BadRequest();
+        }
+        var heroes = await this._context.Heroes.ToListAsync();
+        var hero = heroes.Find(hero => hero.Name == name);
+        if(hero == null) {
+            return BadRequest();
+        }
+        return Ok(hero); 
+    }
+
+    [HttpPost("add_hero")]
     public async Task<ActionResult<List<Hero>>> CreateHero([FromBody]Hero newHero)
     {
-        heroes.Add(newHero); 
-        return Ok(heroes); 
+        if (newHero == null) return BadRequest(); 
+        await this._context.Heroes.AddAsync(newHero);
+        await this._context.SaveChangesAsync(); 
+        return Ok(await this._context.Heroes.ToListAsync()); 
+    }
+
+    [HttpPut("update_hero")]
+    public async Task<ActionResult<List<Hero>>> UpdateHero([FromBody] Hero updatedHero) 
+    {
+        if(updatedHero == null)  return BadRequest();
+        var hero = await this._context.Heroes.FindAsync(updatedHero.Id);
+        if(hero == null)  return BadRequest();
+        hero.Name = updatedHero.Name; 
+        hero.RealName = updatedHero.RealName; 
+        this._context.Heroes.Update(hero);  
+        this._context.SaveChanges(); 
+        return Ok(); 
+    }
+
+    [HttpDelete("delete_hero")]
+    public async Task<ActionResult<List<Hero>>> DeleteHero([FromBody] int Id) {
+        if(Id == 0)  return BadRequest();
+        var hero = await this._context.Heroes.FindAsync(Id); 
+        if(hero == null)  return BadRequest();
+        this._context.Heroes.Remove(hero);
+        this._context.SaveChanges();  
+        return Ok(); 
     }
 }

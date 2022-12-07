@@ -6,6 +6,7 @@
 	- MINIMUM SYNDICAL
 	- controlleur api est une classe qui permet de traiter des requetes http entrantes et de fournir des réponses.
 	- api contient toute la logique / tout les calculs doivent se faire dans l'api
+	- get request cannot have body
 -  Installer entity framework: 
 	- dotnet tool install --global dotnet-ef  
 	- ensuite on va (à la manière de npm) installer des package de nugget
@@ -17,4 +18,6 @@
 	 - Depuis l'instance unique on peut accéder au table et à des méthodes qui nous permet de manipuler le context sans modifier la base de données 
 	 - dotnet ef migrations add initialMigrations
 	 - dotnet ef database update pour regler connection string
+	 - //this._context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Heroes OFF"); EN cas de problème de indentity_Insert qui protège la table il faut faire cette command à la main. 
+	
 	 
