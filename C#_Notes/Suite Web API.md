@@ -1,1 +1,9 @@
-- faire des DTO en entrée qui vont ensuite dans les services faire trasnformer les informations en HERO 
+- faire des DTO entree Film et Power 
+-  classe Utils fonction static de conversion
+- inserer de nouveaux film et pouvoir 
+- tester le add hero 
+- creer des interfaces avec des fonctions.
+- creer des classes services qui implement
+- mettre le code des route dans les fonctions 
+- clean le code 
+- auestions README 
