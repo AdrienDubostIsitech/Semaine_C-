@@ -1,15 +1,10 @@
 public class Power 
 {
-     public int Id { get; set; }
-    public string? PowerName { get; set; }
-    public powerLevel powerLevel { get; set; }
-}
+    public int Id { get; set; }
+    public string PowerName { get; set; } = string.Empty; 
 
-public enum powerLevel {
-    WEAK,
-    MEDIUM, 
-    STRONG, 
-    OVER_POWERED,
-    PLANET_EATER, 
-    ETERNAL
-} 
+    public double PowerIndice { get; set; } 
+
+    //Foreign key
+    public List<Hero> Heroes { get; set; }
+}

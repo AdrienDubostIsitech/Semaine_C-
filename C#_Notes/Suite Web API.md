@@ -1,0 +1,1 @@
+- faire des DTO en entrée qui vont ensuite dans les services faire trasnformer les informations en HERO 

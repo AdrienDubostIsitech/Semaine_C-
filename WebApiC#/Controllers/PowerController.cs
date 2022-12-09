@@ -5,6 +5,7 @@ namespace WebApiC_.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class PowerController : ControllerBase {
+    
     private readonly WebApiDbContext _context; 
 
     public PowerController(WebApiDbContext apiDbContext) 
@@ -22,6 +23,7 @@ public class PowerController : ControllerBase {
     {
         if(NewPower == null) return BadRequest(); 
         await this._context.Powers.AddAsync(NewPower); 
+        await this._context.SaveChangesAsync(); 
         return Ok(await this._context.Powers.ToListAsync()); 
     }
 
@@ -32,9 +34,9 @@ public class PowerController : ControllerBase {
         var power = await this._context.Powers.FindAsync(updatedPower.Id);
         if(power == null)  return BadRequest();
         if(power.PowerName != null) power.PowerName = updatedPower.PowerName; 
-        if(power.powerLevel != null) power.powerLevel = updatedPower.powerLevel; 
+        if(power.PowerIndice != 0) power.PowerIndice = updatedPower.PowerIndice; 
         this._context.Powers.Update(power);  
-        this._context.SaveChanges(); 
+        await this._context.SaveChangesAsync(); 
         return Ok(await this._context.Powers.ToListAsync()); 
     }
         

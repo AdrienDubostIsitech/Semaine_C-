@@ -1,4 +1,4 @@
-    using Microsoft.AspNetCore.Mvc; 
+using Microsoft.AspNetCore.Mvc; 
 using System.Net; 
 namespace WebApiC_.Controllers;
 
@@ -6,7 +6,7 @@ namespace WebApiC_.Controllers;
 [Route("[controller]")]
 public class FilmController : ControllerBase 
 {
-    private readonly WebApiDbContext _context; 
+   private readonly WebApiDbContext _context; 
 
     public FilmController(WebApiDbContext apiDbContext) 
     {
@@ -23,6 +23,7 @@ public class FilmController : ControllerBase
     {
         if(Newfilm == null) return BadRequest(); 
         await this._context.Films.AddAsync(Newfilm); 
+        await this._context.SaveChangesAsync(); 
         return Ok(await this._context.Films.ToListAsync()); 
     }
 

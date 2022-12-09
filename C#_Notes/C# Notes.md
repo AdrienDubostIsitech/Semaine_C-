@@ -124,14 +124,45 @@
 - Classe Abstraite : 
 	- C# permet de rendre les classes et membres abstraites : ne peut pas être instancier et une méthode ne contient pas d'implémentation définir la forme des classes enfants sans en définir le fond l'implémentation est à la charge des classes enfant une classe abstraite permet aussi d'avoir des propriétés.
 
-
 - CLI Dotnet :
 	- dotnet new --list // tout les projet possible
 	- dotnet new webapi -o nomduDossier // créer une api web ASP.NET avec le dossier nommé 
 
+-  Types Générique :
+	- Les types generique permettent de combiner la reutilisabilité du code et la securité du code 
+	- le typage permet de controler les entrées sorties pour renvoyer de bonne information et controler les données.
+	- .NET expose ces collection dans l'espace de nom```
+	```
+	C#
+	System.Collections.Generic
+	
+	List<T>
+	
+	Dictionary<TKey, TValue>
+	```
+	- Dans une collection classique comme ArrayList le type des objets n'est pas conserve, ils sont stockes en faisant une conversion vers le type Object 
+	- On peut créer ses propres type génériques :
+	```
+	public class MagicClass<T> {
+		protected List<T> myList; 
+	}
+	```
+	- Le parametre T accepte un type au moment de l'instanciation : 
+		```
+			MagicClass<int>	magic = new MagicClass<int>(); 
+		```
+	- Un type générique peut faire référence a plusieurs classes : 
+		``` C#
+			public class UneClasseGenerique<T, U>
+			public class UneClasseGenerique<T> // surcharge 
+			public class UneClasseGenerique<U> // erreur ne compile pas
+		```
+	- Surcharge = même signature mais nombre d'arguments différents
+
+- Lambda : 
 
 
-
+-  Delegate : 
 
 pourquoi y'a des portées dans les langages et à quoi ça sert ?????????
 exemple d'usage de classe abstraite et exemple d'usage d'interface pour expliquer différence

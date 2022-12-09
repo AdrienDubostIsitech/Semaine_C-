@@ -43,7 +43,6 @@ public class HeroController : ControllerBase
     [HttpPost("add_hero")]
     public async Task<ActionResult<List<Hero>>> CreateHero([FromBody]Hero newHero)
     {
-        if (newHero == null) return BadRequest(); 
         await this._context.Heroes.AddAsync(newHero);
         await this._context.SaveChangesAsync(); 
         return Ok(await this._context.Heroes.ToListAsync()); 
@@ -57,10 +56,10 @@ public class HeroController : ControllerBase
         if(hero == null)  return BadRequest();
         if(hero.Name != null) hero.Name = updatedHero.Name; 
         if(hero.RealName != null) hero.RealName = updatedHero.RealName; 
-        if(hero.Films != null) hero.Films = updatedHero.Films; 
-        if(hero.Powers != null) hero.Powers = updatedHero.Powers; 
+        //if(hero.LFilms != null) hero.LFilms = updatedHero.LFilms; 
+        //if(hero.LPowers != null) hero.LPowers = updatedHero.LPowers; 
         this._context.Heroes.Update(hero);  
-        this._context.SaveChanges(); 
+        await this._context.SaveChangesAsync(); 
         return Ok(); 
     }
 
