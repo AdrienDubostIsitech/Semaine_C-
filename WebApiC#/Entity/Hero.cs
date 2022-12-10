@@ -5,7 +5,7 @@ public class Hero
     public string Name { get; set; } = string.Empty; 
     public string RealName { get; set; } = string.Empty; 
 
-    public List<Film> Films { get; set; }
-    public List<Power> Powers { get; set; } 
+    public List<Film> Films { get; set; } = new List<Film>(); 
+    public List<Power> Powers { get; set; }  = new List<Power>(); 
 
 }

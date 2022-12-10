@@ -14,34 +14,38 @@ public class PowerController : ControllerBase {
     }
 
     [HttpGet("get_powers")]
-    public async Task<ActionResult<List<Film>>> GetAllFilms() {
-        return Ok(await this._context.Powers.ToListAsync()); 
+    public async Task<ActionResult<List<PowerDTOResponse>>> GetAllFilms() {
+         return Ok(await this._context.Powers.ToListAsync()); 
     }
 
     [HttpPost("post_power")]
-    public async Task<ActionResult<List<Film>>> PostNewFilm([FromBody] Power NewPower) 
+    public async Task<ActionResult<List<PowerDTOResponse>>> PostNewFilm([FromBody] PowerDTORequest NewPower) 
     {
-        if(NewPower == null) return BadRequest(); 
-        await this._context.Powers.AddAsync(NewPower); 
-        await this._context.SaveChangesAsync(); 
-        return Ok(await this._context.Powers.ToListAsync()); 
+         if(NewPower == null) return BadRequest(); 
+        Power power = ConvertUtils.RequestToPower(NewPower); 
+        PowerDTOResponse powerDTOResponse = await ConvertUtils.PowertoResponse(power, this._context); 
+        await this._context.Powers.AddAsync(power);  
+        await this._context.SaveChangesAsync();
+        return Ok(powerDTOResponse);
     }
 
        [HttpPut("update_Power")]
-    public async Task<ActionResult<List<Hero>>> UpdateHero([FromBody] Power updatedPower) 
+    public async Task<ActionResult<List<PowerDTOResponse>>> UpdateHero([FromBody] PowerDTORequest updatedPower, int IdToUpdated) 
     {
         if(updatedPower == null)  return BadRequest();
-        var power = await this._context.Powers.FindAsync(updatedPower.Id);
-        if(power == null)  return BadRequest();
-        if(power.PowerName != null) power.PowerName = updatedPower.PowerName; 
-        if(power.PowerIndice != 0) power.PowerIndice = updatedPower.PowerIndice; 
-        this._context.Powers.Update(power);  
-        await this._context.SaveChangesAsync(); 
-        return Ok(await this._context.Powers.ToListAsync()); 
+        Power powerUpdate = ConvertUtils.RequestToPower(updatedPower); 
+        Power powerToUpdate = await this._context.Powers.FindAsync(IdToUpdated); 
+        if(powerToUpdate == null) return BadRequest();
+        if(powerUpdate.PowerName != null || powerUpdate.PowerName != "string") powerToUpdate.PowerName = powerUpdate.PowerName; 
+        powerToUpdate.PowerIndice = powerUpdate.PowerIndice;  
+        PowerDTOResponse powerDTOResponse = await ConvertUtils.PowertoResponse(powerToUpdate, this._context);
+        this._context.Powers.Update(powerToUpdate); 
+        await this._context.SaveChangesAsync();
+        return Ok(powerDTOResponse);
     }
         
     [HttpDelete("delete_power")]
-    public async Task<ActionResult<List<Power>>> DeleteHero([FromBody] int Id) {
+    public async Task<ActionResult<List<PowerDTOResponse>>> DeleteHero([FromBody] int Id) {
         if(Id == 0)  return BadRequest();
         var power = await this._context.Powers.FindAsync(Id); 
         if(power == null)  return BadRequest();

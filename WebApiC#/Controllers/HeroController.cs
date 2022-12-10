@@ -21,7 +21,7 @@ public class HeroController : ControllerBase
     }
 
     [HttpGet("get_heroes")]
-    public async Task<ActionResult<List<Hero>>> GetHeroes()
+    public async Task<ActionResult<List<HeroDTOResponse>>> GetHeroes()
     {
         return Ok(await this._context.Heroes.ToListAsync());
     }
@@ -43,42 +43,26 @@ public class HeroController : ControllerBase
     }
 
     [HttpPost("add_hero")]
-    public async Task<ActionResult<List<Hero>>> CreateHero([FromBody] HeroDTORequest newHero)
+    public async Task<ActionResult<List<HeroDTOResponse>>> CreateHero([FromBody] HeroDTORequest newHero)
     {
         if (newHero == null) return BadRequest();
-        Hero hero = new Hero();
-        List<Film> Films = new List<Film>();
-        List<Power> Powers = new List<Power>();
-        if (newHero != null) hero.Name = newHero.HeroName;
-        if (newHero.RealHeroName != null) hero.RealName = newHero.RealHeroName;
-        foreach (int id in newHero.FilmsId)
-        {
-            Film tmpFilm = await this._context.Films.FindAsync(id);
-            if (tmpFilm != null) Films.Add(tmpFilm);
-        }
-        foreach (int id in newHero.PowersId)
-        {
-            Power tmpPower = await this._context.Powers.FindAsync(id);
-            if (tmpPower != null) Powers.Add(tmpPower);
-        }
-        if(newHero.FilmsId != null) hero.Films = Films; 
-        if(newHero.PowersId != null) hero.Powers = Powers; 
+        Hero hero = await ConvertUtils.RequestToHero(newHero, this._context); 
+        HeroDTOResponse heroDTOResponse = await ConvertUtils.HeroToResponse(hero); 
         await this._context.Heroes.AddAsync(hero); 
         await this._context.SaveChangesAsync();
-        return Ok(await this._context.Heroes.ToListAsync());
+        return Ok(heroDTOResponse);
     }
 
     [HttpPut("update_hero")]
-    public async Task<ActionResult<List<Hero>>> UpdateHero([FromBody] Hero updatedHero)
+    public async Task<ActionResult<List<Hero>>> UpdateHero([FromBody] HeroDTORequest updatedHero)
     {
         if (updatedHero == null) return BadRequest();
-        var hero = await this._context.Heroes.FindAsync(updatedHero.Id);
-        if (hero == null) return BadRequest();
-        if (hero.Name != null) hero.Name = updatedHero.Name;
-        if (hero.RealName != null) hero.RealName = updatedHero.RealName;
-        this._context.Heroes.Update(hero);
+        Hero HeroUpdate = await ConvertUtils.RequestToHero(updatedHero, this._context); 
+        var hero = await this._context.Heroes.FindAsync(HeroUpdate.Id);
+        HeroDTOResponse heroDTOResponse = await ConvertUtils.HeroToResponse(hero);  
+        this._context.Heroes.Update(hero); 
         await this._context.SaveChangesAsync();
-        return Ok();
+        return Ok(await this._context.Heroes.ToListAsync());
     }
 
     [HttpDelete("delete_hero")]
@@ -89,6 +73,6 @@ public class HeroController : ControllerBase
         if (hero == null) return BadRequest();
         this._context.Heroes.Remove(hero);
         this._context.SaveChanges();
-        return Ok();
+        return Ok(await this._context.Heroes.ToListAsync());
     }
 }

@@ -1,7 +1,7 @@
-- faire des DTO entree Film et Power 
--  classe Utils fonction static de conversion
-- inserer de nouveaux film et pouvoir 
-- tester le add hero 
+- faire des DTO entree Film et Power  DONE
+-  classe Utils fonction static de conversion DONE
+- inserer de nouveaux film et pouvoir DONE
+- tester le add hero BUG
 - creer des interfaces avec des fonctions.
 - creer des classes services qui implement
 - mettre le code des route dans les fonctions 
